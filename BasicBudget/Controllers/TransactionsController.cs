@@ -11,12 +11,12 @@ namespace BasicBudget.Controllers
     [Route("[controller]")]
     public class TransactionsController
     {
-/*         private readonly TransactionService transactionService;
+        private readonly TransactionService transactionService;
 
         public TransactionsController(TransactionService transactionService)
         {
             this.transactionService = transactionService;
-        } */
+        }/* 
         public IEnumerable<Transaction> Get()
         {
             var randomizationVariable = new Random();
@@ -26,11 +26,11 @@ namespace BasicBudget.Controllers
                 Amount = randomizationVariable.Next(-1000,1000)
             })
             .ToArray();
-        }
-        /* [HttpGet] */
-        /*         public IEnumerable<Transaction> Get()
+        } */
+        [HttpGet]
+        public IEnumerable<Transaction> Get()
         {
             return transactionService.Get().ToArray();
-        } */
+        }
     }
 }
