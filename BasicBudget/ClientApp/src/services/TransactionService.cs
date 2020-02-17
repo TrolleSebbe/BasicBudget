@@ -1,0 +1,31 @@
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
+using BasicBudget.ClientApp.src.models;
+
+namespace BasicBudget.ClientApp.src.services
+{
+    public class TransactionService
+    {
+        private readonly IMongoCollection<Transaction> transactions;
+
+        public TransactionService(IConfiguration config)
+        {
+            MongoClient client = new MongoClient(config.GetConnectionString("BasicBudgetDb"));
+            IMongoDatabase database = client.GetDatabase("BasicBudgetDb");
+            transactions = database.GetCollection<Transaction>("Transactions");
+        }
+
+        public List<Transaction> Get()
+        {
+            return transactions.Find(Transaction => true).ToList();
+        }
+
+        public Transaction Create(Transaction transaction)
+        {
+            transactions.InsertOne(transaction);
+            return transaction;
+        }
+    }
+}
