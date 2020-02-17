@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AddNew } from './AddNew';
 
 export class BudgetList extends Component {
   static displayName = BudgetList.name;
@@ -45,6 +46,7 @@ export class BudgetList extends Component {
     return (
       <div>
         <h1 id="tabelLabel" >Budgeting</h1>
+        <AddNew></AddNew>
         <p>Fetching random data from backend</p>
         {contents}
       </div>
