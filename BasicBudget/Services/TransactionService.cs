@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using BasicBudget.ClientApp.src.models;
+using BasicBudget.Models;
 
 namespace BasicBudget.Services
 {
