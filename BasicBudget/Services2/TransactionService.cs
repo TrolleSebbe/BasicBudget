@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using BasicBudget.ClientApp.src.models;
 
-namespace BasicBudget.ClientApp.src.services
+namespace BasicBudget.Services
 {
     public class TransactionService
     {

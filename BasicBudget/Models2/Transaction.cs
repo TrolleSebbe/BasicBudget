@@ -2,7 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace BasicBudget.ClientApp.src.models
+namespace BasicBudget.Models
 {
     public class Transaction
     {
