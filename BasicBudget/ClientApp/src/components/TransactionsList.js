@@ -23,8 +23,8 @@ export class TransactionsList extends Component {
         </thead>
         <tbody>
           {transactions.map(transactionsList =>
-            <tr key={transactionsList.shortname}>
-              <td>{transactionsList.shortname}</td>
+            <tr key={transactionsList.shortName}>
+              <td>{transactionsList.shortName}</td>
               <td>{transactionsList.amount}</td>
             </tr>
           )}
@@ -48,7 +48,7 @@ export class TransactionsList extends Component {
   }
 
   async populateTransactionsList() {
-    const response = await fetch('transaction-list');
+    const response = await fetch('transactions');
     const data = await response.json();
     this.setState({ transactions: data, loading: false });
   }
