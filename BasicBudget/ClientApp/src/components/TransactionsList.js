@@ -5,11 +5,15 @@ export class TransactionsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { transactions: [], loading: true };
+    this.state = { transactions: [], loading: true, shortname: '' };
   }
 
   componentDidMount() {
     this.populateTransactionsList();
+  }
+
+  handleChange = event => {
+    this.setState({ shortname: event.target.value });
   }
 
   static renderTransactionsListTable(transactions) {
@@ -42,6 +46,19 @@ export class TransactionsList extends Component {
       <div>
         <h1 id="tabelLabel" >Transactions</h1>
         <p>Fetching from MongoDb</p>
+        <React.Fragment>
+          <form>
+            <label htmlFor="ShortName">Shortname: </label>
+            <input
+              type="text"
+              name="shortname"
+              value={this.state.shortname}
+              onChange={this.handleChange}
+            />
+            <button>Submit</button>
+          </form>
+          <h3>Text entered: {this.state.shortname}</h3>
+        </React.Fragment>
         {contents}
       </div>
     );
