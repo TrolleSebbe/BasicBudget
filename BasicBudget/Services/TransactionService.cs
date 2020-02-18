@@ -33,10 +33,30 @@ namespace BasicBudget.Services
             return transactions.Find(Transaction => true).ToList();
         }
 
+        public Transaction Get(string id)
+        {
+            return transactions.Find(transaction => transaction.Id == id).FirstOrDefault();
+        }
+
         public Transaction Create(Transaction transaction)
         {
             transactions.InsertOne(transaction);
             return transaction;
+        }
+
+        public void Update(string id, Transaction transactionInput)
+        {
+            transactions.ReplaceOne(transaction => transaction.Id == id, transactionInput);
+        }
+
+        public void Remove(Transaction transactionInput)
+        {
+            transactions.DeleteOne(transaction => transaction.Id == transactionInput.Id);
+        }
+
+        public void Remove(string id)
+        {
+            transactions.DeleteOne(transaction => transaction.Id ==id);
         }
     }
 }
