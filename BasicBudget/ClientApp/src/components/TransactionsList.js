@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AddNew } from './AddNew';
 
 export class TransactionsList extends Component {
   static displayName = TransactionsList.name;
@@ -50,6 +51,7 @@ export class TransactionsList extends Component {
       <div>
         <h1 id="tabelLabel" >Transactions</h1>
         <p>Fetching from MongoDb</p>
+        <AddNew></AddNew>
         {contents}
       </div>
     );
