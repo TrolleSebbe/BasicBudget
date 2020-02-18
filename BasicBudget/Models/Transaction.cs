@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace BasicBudget.Models
 {
@@ -17,5 +18,12 @@ namespace BasicBudget.Models
         [BsonElement("Amount")]
         [Required]
         public int Amount { get; set; }
+
+        [BsonElement("Description")]
+        public string Description { get; set; }
+
+        [BsonElement("TransactionDate")]
+        [Required]
+        public DateTime TransactionDate { get; set; }
     }
 }

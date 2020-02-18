@@ -16,17 +16,8 @@ namespace BasicBudget.Controllers
         public TransactionsController(TransactionService transactionService)
         {
             this.transactionService = transactionService;
-        }/* 
-        public IEnumerable<Transaction> Get()
-        {
-            var randomizationVariable = new Random();
-            return Enumerable.Range(1,100).Select(index => new Transaction
-            {
-                ShortName = "TrolleBolle",
-                Amount = randomizationVariable.Next(-1000,1000)
-            })
-            .ToArray();
-        } */
+        }
+        
         [HttpGet]
         public IEnumerable<Transaction> Get()
         {

@@ -23,6 +23,8 @@ export class TransactionsList extends Component {
           <tr>
             <th>Short Description</th>
             <th>Amount</th>
+            <th>Description</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +32,8 @@ export class TransactionsList extends Component {
             <tr key={transactionsList.shortName}>
               <td>{transactionsList.shortName}</td>
               <td>{transactionsList.amount}</td>
+              <td>{transactionsList.description}</td>
+              <td>{transactionsList.transactionDate}</td>
             </tr>
           )}
         </tbody>
@@ -46,19 +50,6 @@ export class TransactionsList extends Component {
       <div>
         <h1 id="tabelLabel" >Transactions</h1>
         <p>Fetching from MongoDb</p>
-        <React.Fragment>
-          <form>
-            <label htmlFor="ShortName">Shortname: </label>
-            <input
-              type="text"
-              name="shortname"
-              value={this.state.shortname}
-              onChange={this.handleChange}
-            />
-            <button>Submit</button>
-          </form>
-          <h3>Text entered: {this.state.shortname}</h3>
-        </React.Fragment>
         {contents}
       </div>
     );

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,9 @@ namespace BasicBudget.Services
             Transaction trans = new Transaction
             {
                 ShortName = "hej",
-                Amount = 10
+                Amount = 10,
+                Description = "tjenare",
+                TransactionDate = DateTime.Now
             };
             transactions.InsertOne(trans);
             //below is the only real line needed in this function
