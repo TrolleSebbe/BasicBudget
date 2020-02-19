@@ -6,20 +6,19 @@ export class AddNew extends Component {
     addNew(event) {
       console.log('I worked')
       event.preventDefault()
+      //Get formdata from form
       const data = new FormData(event.target);
+      //Generate json object
       let jsonObject = {};
-      for (const [key, value]  of data.entries()) { jsonObject[key] = value; }
-      let json = JSON.stringify(jsonObject);
-      console.log(json);
-      fetch('/api/transactions/addtransaction', {
-        method: 'POST',
-        body: json,
-      });
-      /* var xhr = new XMLHttpRequest()
-      xhr.open('POST', '/api/transactions/addtransaction')
-      xhr.setRequestHeader("Content-Type", "application/json")
-      xhr.send(JSON.stringify({ shortName: "test" }))
-      console.log(JSON.stringify({shortName: "test"})) */
+      jsonObject["shortName"] = data.get("shortName");
+      jsonObject["description"] = data.get("description");
+      jsonObject["amount"] = parseInt(data.get("amount"), 10);
+      //Do POST request
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/transactions/addtransaction');
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify(jsonObject));
+      console.log(JSON.stringify(jsonObject));
     }
 
     render() {
@@ -38,10 +37,10 @@ export class AddNew extends Component {
                   <Label for="Description">Description</Label>
                   <Input type="textarea" name="description" id="Description" placeholder="Add a description of the budgetpost" />
               </FormGroup>
-{/*               <FormGroup>
+              <FormGroup>
                   <Label for="Amount">Amount</Label>
                   <Input type="number" name="amount" id="Amount" placeholder="Add a Amount for budgetPost" />
-              </FormGroup> */}
+              </FormGroup>
               <Button color="primary" id="submit" type="submit">Submit new post</Button>
           </Form>
           
