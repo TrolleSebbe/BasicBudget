@@ -3,6 +3,12 @@ import { Button, UncontrolledCollapse, Card, CardBody, Form, FormGroup, Label, I
 export class AddNew extends Component {
 
 
+    addNew() {
+      var xhr = new XMLHttpRequest()
+      xhr.open('POST', '/api/transactions/addtransaction')
+      xhr.send(JSON.stringify({ shortname: "test" }))
+    }
+
     render() {
     return (
       <div>
