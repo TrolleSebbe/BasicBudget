@@ -30,7 +30,7 @@ export class TransactionsList extends Component {
         </thead>
         <tbody>
           {transactions.map(transactionsList =>
-            <tr key={transactionsList.shortName}>
+            <tr key={transactionsList.id}>
               <td>{transactionsList.shortName}</td>
               <td>{transactionsList.amount}</td>
               <td>{transactionsList.description}</td>
