@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BasicBudget.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class TransactionsController
+    [Route("api/[controller]")]
+    public class TransactionsController : Controller
     {
         private readonly TransactionService transactionService;
 
@@ -17,8 +17,8 @@ namespace BasicBudget.Controllers
         {
             this.transactionService = transactionService;
         }
-        
-        [HttpGet]
+
+        [HttpGet("[action]")]
         public IEnumerable<Transaction> Get()
         {
             return transactionService.Get().ToArray();

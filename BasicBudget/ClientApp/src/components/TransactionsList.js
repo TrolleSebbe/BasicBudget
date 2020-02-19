@@ -58,7 +58,7 @@ export class TransactionsList extends Component {
   }
 
   async populateTransactionsList() {
-    const response = await fetch('transactions');
+    const response = await fetch('api/Transactions/Get');
     const data = await response.json();
     this.setState({ transactions: data, loading: false });
   }
