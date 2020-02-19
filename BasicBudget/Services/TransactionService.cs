@@ -20,16 +20,6 @@ namespace BasicBudget.Services
 
         public List<Transaction> Get()
         {
-            //this adds a transaction to the db so we have something to show
-            Transaction trans = new Transaction
-            {
-                ShortName = "hej",
-                Amount = 10,
-                Description = "tjenare",
-                TransactionDate = DateTime.Now
-            };
-            transactions.InsertOne(trans);
-            //below is the only real line needed in this function
             return transactions.Find(Transaction => true).ToList();
         }
 
