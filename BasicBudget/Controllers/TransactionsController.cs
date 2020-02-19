@@ -9,7 +9,7 @@ namespace BasicBudget.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TransactionsController : Controller
+    public class TransactionsController : ControllerBase // : ControllerBase is inheritance
     {
         private readonly TransactionService transactionService;
 
@@ -22,6 +22,12 @@ namespace BasicBudget.Controllers
         public IEnumerable<Transaction> Get()
         {
             return transactionService.Get().ToArray();
+        }
+
+        [HttpPost("[action]")]
+        public Transaction AddTransaction(Transaction transaction)
+        {
+            return transactionService.Create(transaction);
         }
     }
 }
