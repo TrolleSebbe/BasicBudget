@@ -3,10 +3,13 @@ import { Button, UncontrolledCollapse, Card, CardBody, Form, FormGroup, Label, I
 export class AddNew extends Component {
 
 
-    addNew() {
+    addNew(event) {
+      console.log('I worked')
+      event.preventDefault()
       var xhr = new XMLHttpRequest()
       xhr.open('POST', '/api/transactions/addtransaction')
       xhr.send(JSON.stringify({ shortname: "test" }))
+      console.log(JSON.stringify({shortname: "test"}))
     }
 
     render() {
@@ -16,7 +19,7 @@ export class AddNew extends Component {
     <UncontrolledCollapse toggler="#toggler">
       <Card>
         <CardBody>
-          <Form>
+          <Form onSubmit={this.addNew}>
               <FormGroup>
                   <Label for="Name">Name</Label>
                   <Input type="text" name="ShortName" id="Name" placeholder="Add a short description of the budgetpost" />
@@ -29,7 +32,9 @@ export class AddNew extends Component {
                   <Label for="Amount">Amount</Label>
                   <Input type="number" name="Amount" id="Amount" placeholder="Add a Amount for budgetPost" />
               </FormGroup>
+              <Button color="primary" id="submit" type="submit">Submit new post</Button>
           </Form>
+          
         </CardBody>
       </Card>
     </UncontrolledCollapse>
