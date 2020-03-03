@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
     Button,
-    UncontrolledCollapse,
     Collapse,
     Card,
     CardBody,
@@ -37,6 +36,8 @@ class AddNew extends React.Component {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(jsonObject));
         console.log(JSON.stringify(jsonObject));
+        //Update transaction list through inherited function
+        this.props.onAddNew(jsonObject);
     }
 
     render() {

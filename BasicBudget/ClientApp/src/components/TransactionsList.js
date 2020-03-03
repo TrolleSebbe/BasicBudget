@@ -9,16 +9,19 @@ class TransactionsList extends Component {
         this.state = {
             transactions: [],
             loading: true,
-            shortname: ''
+            totalTransactions: 0,
         };
+        this.handleAddNew = this.handleAddNew.bind(this);
     }
 
     componentDidMount() {
         this.populateTransactionsList();
     }
 
-    handleChange = event => {
-        this.setState({shortname: event.target.value});
+    handleAddNew(newTransaction) {
+        let transactions = this.state.transactions;
+        transactions.push(newTransaction);
+        this.setState({ transactions: transactions });
     }
 
     static renderTransactionsListTable(transactions) {
@@ -55,7 +58,7 @@ class TransactionsList extends Component {
             <div>
                 <h1 id="tabelLabel">Transactions</h1>
                 <p>Fetching from MongoDb</p>
-                <AddNew></AddNew>
+                <AddNew onAddNew={ this.handleAddNew }></AddNew>
                 {contents}
             </div>
         );
