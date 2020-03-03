@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
     Button,
     UncontrolledCollapse,
+    Collapse,
     Card,
     CardBody,
     Form,
@@ -13,10 +14,15 @@ class AddNew extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            isOpen: false,
+        };
+        this.handleSubmit = this.handleSubmit.bind(this); //this allows handleSubmit to access "this"
     }
 
     handleSubmit(event) {
         console.log('I worked')
+        this.setState({ isOpen: false });
         event.preventDefault()
         //Get formdata from form
         const data = new FormData(event.target);
@@ -37,12 +43,13 @@ class AddNew extends React.Component {
         return (
             <div>
                 <Button
+                    onClick={() => this.setState({ isOpen: !this.state.isOpen })} //it felt like the toggle didnt need to be a "real" function
                     color="primary"
                     id="toggler"
                     style={{
                     marginBottom: '1rem'
                 }}>Add New Bugetpost</Button>
-                <UncontrolledCollapse toggler="#toggler">
+                <Collapse isOpen={this.state.isOpen}>
                     <Card>
                         <CardBody>
                             <Form onSubmit={this.handleSubmit}>
@@ -74,7 +81,7 @@ class AddNew extends React.Component {
                             </Form>
                         </CardBody>
                     </Card>
-                </UncontrolledCollapse>
+                </Collapse>
             </div>
         );
     }
