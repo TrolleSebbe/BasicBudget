@@ -9,7 +9,7 @@ import {
     Label,
     Input
 } from 'reactstrap';
-export class AddNew extends Component {
+class AddNew extends React.Component {
 
     addNew(event) {
         console.log('I worked')
@@ -75,3 +75,5 @@ export class AddNew extends Component {
         );
     }
 }
+
+export { AddNew };

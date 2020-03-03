@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AddNew} from './AddNew';
 
-export class TransactionsList extends Component {
+class TransactionsList extends Component {
     static displayName = TransactionsList.name;
 
     constructor(props) {
@@ -67,3 +67,5 @@ export class TransactionsList extends Component {
         this.setState({transactions: data, loading: false});
     }
 }
+
+export { TransactionsList };
