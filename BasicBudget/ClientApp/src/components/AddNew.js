@@ -25,14 +25,12 @@ class AddNew extends React.Component {
     handleSubmit(event) {
         console.log('I worked')
         this.setState({ isOpen: false });
-        event.preventDefault()
-        //Get formdata from form
-        const data = new FormData(event.target);
+        event.preventDefault();
         //Generate json object
         let jsonObject = {};
-        jsonObject["shortName"] = data.get("shortName");
-        jsonObject["description"] = data.get("description");
-        jsonObject["amount"] = parseInt(data.get("amount"), 10);
+        jsonObject["shortName"] = this.state.shortName;
+        jsonObject["description"] = this.state.description;
+        jsonObject["amount"] = parseInt(this.state.amount, 10);
         //Do POST request
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/transactions/addtransaction');
