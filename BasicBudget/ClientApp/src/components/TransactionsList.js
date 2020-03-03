@@ -19,9 +19,13 @@ class TransactionsList extends Component {
     }
 
     handleAddNew(newTransaction) {
-        let transactions = this.state.transactions;
-        transactions.push(newTransaction);
-        this.setState({ transactions: transactions });
+        // Solution to only add new transaction to list (lightweight)
+        // let transactions = this.state.transactions;
+        // transactions.push(newTransaction);
+        // this.setState({ transactions: transactions });
+        // Solution to get full accurate list every time (heavier?)
+        this.populateTransactionsList();
+        TransactionsList.renderTransactionsListTable(this.state.transactions);
     }
 
     static renderTransactionsListTable(transactions) {
