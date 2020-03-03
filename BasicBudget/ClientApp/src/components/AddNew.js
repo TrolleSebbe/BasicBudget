@@ -15,6 +15,9 @@ class AddNew extends React.Component {
         super(props);
         this.state = {
             isOpen: false,
+            shortName: '',
+            description: '',
+            amount: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this); //this allows handleSubmit to access "this"
     }
@@ -38,6 +41,10 @@ class AddNew extends React.Component {
         console.log(JSON.stringify(jsonObject));
         //Update transaction list through inherited function
         this.props.onAddNew(jsonObject);
+        //Clean form from data
+        this.setState({shortName: ''});
+        this.setState({description: ''});
+        this.setState({amount: ''});
     }
 
     render() {
@@ -57,6 +64,8 @@ class AddNew extends React.Component {
                                 <FormGroup>
                                     <Label for="Name">Name</Label>
                                     <Input
+                                        onChange={(event) => this.setState({shortName: event.currentTarget.value})}
+                                        value={this.state.shortName}
                                         type="text"
                                         name="shortName"
                                         id="Name"
@@ -65,6 +74,8 @@ class AddNew extends React.Component {
                                 <FormGroup>
                                     <Label for="Description">Description</Label>
                                     <Input
+                                        onChange={(event) => this.setState({description: event.currentTarget.value})}
+                                        value={this.state.description}
                                         type="textarea"
                                         name="description"
                                         id="Description"
@@ -73,6 +84,8 @@ class AddNew extends React.Component {
                                 <FormGroup>
                                     <Label for="Amount">Amount</Label>
                                     <Input
+                                        onChange={(event) => this.setState({amount: event.currentTarget.value})}
+                                        value={this.state.amount}
                                         type="number"
                                         name="amount"
                                         id="Amount"
