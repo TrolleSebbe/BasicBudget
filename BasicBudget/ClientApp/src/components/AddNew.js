@@ -11,7 +11,11 @@ import {
 } from 'reactstrap';
 class AddNew extends React.Component {
 
-    addNew(event) {
+    constructor(props) {
+        super(props);
+    }
+
+    handleSubmit(event) {
         console.log('I worked')
         event.preventDefault()
         //Get formdata from form
@@ -41,7 +45,7 @@ class AddNew extends React.Component {
                 <UncontrolledCollapse toggler="#toggler">
                     <Card>
                         <CardBody>
-                            <Form onSubmit={this.addNew}>
+                            <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Label for="Name">Name</Label>
                                     <Input
