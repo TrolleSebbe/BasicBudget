@@ -46,7 +46,7 @@ namespace BasicBudget.Services
 
         public void Remove(string id)
         {
-            transactions.DeleteOne(transaction => transaction.Id ==id);
+            transactions.DeleteOne(transaction => transaction.Id == id);
         }
     }
 }

@@ -29,5 +29,11 @@ namespace BasicBudget.Controllers
         {
             return transactionService.Create(transaction);
         }
+
+        [HttpDelete("[action]")]
+        public void DeleteTransaction(Transaction transaction)
+        {
+            transactionService.Remove(transaction);
+        }
     }
 }
