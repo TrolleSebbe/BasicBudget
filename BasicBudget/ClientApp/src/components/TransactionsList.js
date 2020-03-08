@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {AddNew} from './AddNew';
+import {DeleteOne} from './DeleteOne';
 
 class TransactionsList extends Component {
     static displayName = TransactionsList.name;
@@ -40,11 +41,12 @@ class TransactionsList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactions.map(transactionsList => <tr key={transactionsList.id}>
-                        <td>{transactionsList.shortName}</td>
-                        <td>{transactionsList.amount}</td>
-                        <td>{transactionsList.description}</td>
-                        <td>{transactionsList.transactionDate}</td>
+                    {transactions.map(currentTransaction => <tr key={currentTransaction.id}>
+                        <td>{currentTransaction.shortName}</td>
+                        <td>{currentTransaction.amount}</td>
+                        <td>{currentTransaction.description}</td>
+                        <td>{currentTransaction.transactionDate}</td>
+                        <td><DeleteOne transaction ={ currentTransaction } ></DeleteOne></td>
                     </tr>)}
                 </tbody>
             </table>
