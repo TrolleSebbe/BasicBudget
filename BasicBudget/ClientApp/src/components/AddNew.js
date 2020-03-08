@@ -58,7 +58,7 @@ class AddNew extends React.Component {
                 <Collapse isOpen={this.state.isOpen}>
                     <Card>
                         <CardBody>
-                            <Form onSubmit={this.handleSubmit}>
+                            <Form onSubmit={(event) => {this.handleSubmit(event)} }>
                                 <FormGroup>
                                     <Label for="Name">Name</Label>
                                     <Input
