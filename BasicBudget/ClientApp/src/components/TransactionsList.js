@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {AddNew} from './AddNew';
 import {DeleteOne} from './DeleteOne';
+import {
+    Table,
+  } from 'reactstrap';
 
 class TransactionsList extends Component {
     static displayName = TransactionsList.name;
@@ -46,7 +49,7 @@ class TransactionsList extends Component {
 
     renderTransactionsListTable(transactions) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
+            <Table hover>
                 <thead>
                     <tr>
                         <th>Short Description</th>
@@ -65,7 +68,7 @@ class TransactionsList extends Component {
                         <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne></td>
                     </tr>)}
                 </tbody>
-            </table>
+            </Table>
         );
     }
 
