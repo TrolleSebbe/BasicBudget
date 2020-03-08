@@ -13,6 +13,7 @@ class TransactionsList extends Component {
             totalTransactions: 0,
         };
         this.handleAddNew = this.handleAddNew.bind(this);
+        this.handleDeleteOne = this.handleDeleteOne.bind(this);
     }
 
     componentDidMount() {
@@ -21,10 +22,15 @@ class TransactionsList extends Component {
 
     handleAddNew(newTransaction) {
         // Solution to only add new transaction to list (lightweight)
-        // let transactions = this.state.transactions;
-        // transactions.push(newTransaction);
-        // this.setState({ transactions: transactions });
+        let transactions = this.state.transactions;
+        transactions.push(newTransaction);
+        this.setState({ transactions: transactions });
         // Solution to get full accurate list every time (heavier?)
+        // this.populateTransactionsList();
+        //this.renderTransactionsListTable(this.state.transactions);
+    }
+
+    handleDeleteOne(removedTransaction) {
         this.populateTransactionsList();
         this.renderTransactionsListTable(this.state.transactions);
     }
@@ -38,6 +44,7 @@ class TransactionsList extends Component {
                         <th>Amount</th>
                         <th>Description</th>
                         <th>Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,7 +53,7 @@ class TransactionsList extends Component {
                         <td>{currentTransaction.amount}</td>
                         <td>{currentTransaction.description}</td>
                         <td>{currentTransaction.transactionDate}</td>
-                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={() => {this.handleAddNew()}}></DeleteOne></td>
+                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={() => {this.handleDeleteOne()}}></DeleteOne></td>
                     </tr>)}
                 </tbody>
             </table>
@@ -64,7 +71,7 @@ class TransactionsList extends Component {
             <div>
                 <h1 id="tabelLabel">Transactions</h1>
                 <p>Fetching from MongoDb</p>
-                <AddNew onAddNew={() => {this.handleAddNew()} }></AddNew>
+                <AddNew onAddNew={(newTransaction) => {this.handleAddNew(newTransaction)} }></AddNew>
                 {contents}
             </div>
         );

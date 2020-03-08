@@ -23,7 +23,6 @@ class AddNew extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log('I worked')
         this.setState({ isOpen: false });
         event.preventDefault();
         //Generate json object
@@ -33,12 +32,16 @@ class AddNew extends React.Component {
         jsonObject["amount"] = parseInt(this.state.amount, 10);
         //Do POST request
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/transactions/addtransaction');
+        xhr.onreadystatechange = () => { //this triggers when the call is finished
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                //we run onAddNew when we get a response, returning the new item
+                this.props.onAddNew(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.open('POST', '/api/transactions/addtransaction', true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(jsonObject));
-        console.log(JSON.stringify(jsonObject));
-        //Update transaction list through inherited function
-        this.props.onAddNew(jsonObject);
+
         //Clean form from data
         this.setState({shortName: ''});
         this.setState({description: ''});
