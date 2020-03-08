@@ -30,9 +30,18 @@ class TransactionsList extends Component {
         //this.renderTransactionsListTable(this.state.transactions);
     }
 
-    handleDeleteOne() {
-        this.populateTransactionsList();
-        this.renderTransactionsListTable(this.state.transactions);
+    handleDeleteOne(removedTransaction) {
+        //This code only removed the specific transaction from the array
+        let transactions = this.state.transactions;
+        for (var i = 0; i < transactions.length; i++) {
+            if (transactions[i].id === removedTransaction.id) {
+                transactions.splice(i, 1);
+            }
+        }
+        this.setState({ transactions: transactions });
+        // The code below gets the full list
+        // this.populateTransactionsList();
+        // this.renderTransactionsListTable(this.state.transactions);
     }
 
     renderTransactionsListTable(transactions) {
@@ -53,7 +62,7 @@ class TransactionsList extends Component {
                         <td>{currentTransaction.amount}</td>
                         <td>{currentTransaction.description}</td>
                         <td>{currentTransaction.transactionDate}</td>
-                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={() => {this.handleDeleteOne()}}></DeleteOne></td>
+                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne></td>
                     </tr>)}
                 </tbody>
             </table>

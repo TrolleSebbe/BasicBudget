@@ -16,7 +16,7 @@ class DeleteOne extends React.Component {
     xhr.onreadystatechange = () => { //this triggers when the call is finished
       if (xhr.readyState === 4 && xhr.status === 200) {
           //we run onDeleteOne when we get a response
-          this.props.onDeleteOne();
+          this.props.onDeleteOne(this.props.transaction);
       }
     }
     xhr.open('DELETE', '/api/transactions/deletetransaction');
