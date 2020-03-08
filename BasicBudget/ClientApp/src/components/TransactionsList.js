@@ -26,10 +26,10 @@ class TransactionsList extends Component {
         // this.setState({ transactions: transactions });
         // Solution to get full accurate list every time (heavier?)
         this.populateTransactionsList();
-        TransactionsList.renderTransactionsListTable(this.state.transactions);
+        this.renderTransactionsListTable(this.state.transactions);
     }
 
-    static renderTransactionsListTable(transactions) {
+    renderTransactionsListTable(transactions) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
@@ -46,7 +46,7 @@ class TransactionsList extends Component {
                         <td>{currentTransaction.amount}</td>
                         <td>{currentTransaction.description}</td>
                         <td>{currentTransaction.transactionDate}</td>
-                        <td><DeleteOne transaction ={ currentTransaction } ></DeleteOne></td>
+                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={() => {this.handleAddNew()}}></DeleteOne></td>
                     </tr>)}
                 </tbody>
             </table>
@@ -58,13 +58,13 @@ class TransactionsList extends Component {
             ? <p>
                     <em>Loading...</em>
                 </p>
-            : TransactionsList.renderTransactionsListTable(this.state.transactions);
+            : this.renderTransactionsListTable(this.state.transactions);
 
         return (
             <div>
                 <h1 id="tabelLabel">Transactions</h1>
                 <p>Fetching from MongoDb</p>
-                <AddNew onAddNew={() => this.handleAddNew() }></AddNew>
+                <AddNew onAddNew={() => {this.handleAddNew()} }></AddNew>
                 {contents}
             </div>
         );
