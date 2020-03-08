@@ -12,12 +12,16 @@ class DeleteOne extends React.Component {
 
   handleDeleteOne() {
     //Delete from db
-    console.log(JSON.stringify(this.props.transaction));
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => { //this triggers when the call is finished
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          //we run onDeleteOne when we get a response
+          this.props.onDeleteOne();
+      }
+    }
     xhr.open('DELETE', '/api/transactions/deletetransaction');
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(this.props.transaction));
-    this.props.onDeleteOne(this.props.transaction);
   }
 
   render() {

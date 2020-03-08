@@ -30,7 +30,7 @@ class TransactionsList extends Component {
         //this.renderTransactionsListTable(this.state.transactions);
     }
 
-    handleDeleteOne(removedTransaction) {
+    handleDeleteOne() {
         this.populateTransactionsList();
         this.renderTransactionsListTable(this.state.transactions);
     }
