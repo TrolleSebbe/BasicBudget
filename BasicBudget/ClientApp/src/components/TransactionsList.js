@@ -64,7 +64,7 @@ class TransactionsList extends Component {
             <div>
                 <h1 id="tabelLabel">Transactions</h1>
                 <p>Fetching from MongoDb</p>
-                <AddNew onAddNew={ this.handleAddNew }></AddNew>
+                <AddNew onAddNew={() => this.handleAddNew() }></AddNew>
                 {contents}
             </div>
         );
