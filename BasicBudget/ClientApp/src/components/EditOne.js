@@ -32,8 +32,26 @@ class EditOne extends React.Component {
     });
   }
 
-  handleSubmit() {
-    console.log("submitted...");
+  handleSubmit(event) {
+    event.preventDefault();
+    //Generate json object
+    let jsonObject = {};
+    jsonObject["id"] = this.props.transaction.id;
+    jsonObject["shortName"] = this.state.shortName;
+    jsonObject["description"] = this.state.description;
+    jsonObject["amount"] = parseInt(this.state.amount, 10);
+    //Do POST request
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => { //this triggers when the call is finished
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            //we run onAddNew when we get a response, returning the new item
+            this.props.onEditOne(JSON.parse(xhr.responseText));
+        }
+    }
+    xhr.open('POST', '/api/transactions/edittransaction', true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(jsonObject));
+    //Close modal
     this.setState({isOpen: false});
   }
 

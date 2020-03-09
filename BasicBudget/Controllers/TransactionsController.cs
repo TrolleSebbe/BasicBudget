@@ -35,5 +35,11 @@ namespace BasicBudget.Controllers
         {
             transactionService.Remove(transaction);
         }
+
+        [HttpPost("[action]")]
+        public Transaction EditTransaction(Transaction transaction)
+        {
+            return transactionService.Update(transaction);
+        }
     }
 }

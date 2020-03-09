@@ -34,9 +34,10 @@ namespace BasicBudget.Services
             return transaction;
         }
 
-        public void Update(string id, Transaction transactionInput)
+        public Transaction Update(Transaction transactionInput)
         {
-            transactions.ReplaceOne(transaction => transaction.Id == id, transactionInput);
+            transactions.ReplaceOne(transaction => transaction.Id == transactionInput.Id, transactionInput);
+            return transactionInput;
         }
 
         public void Remove(Transaction transactionInput)

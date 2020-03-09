@@ -19,6 +19,7 @@ class TransactionsList extends Component {
         };
         this.handleAddNew = this.handleAddNew.bind(this);
         this.handleDeleteOne = this.handleDeleteOne.bind(this);
+        this.handleEditOne = this.handleEditOne.bind(this);
     }
 
     componentDidMount() {
@@ -41,10 +42,26 @@ class TransactionsList extends Component {
         for (var i = 0; i < transactions.length; i++) {
             if (transactions[i].id === removedTransaction.id) {
                 transactions.splice(i, 1);
+                break;
             }
         }
         this.setState({ transactions: transactions });
         // The code below gets the full list
+        // this.populateTransactionsList();
+        // this.renderTransactionsListTable(this.state.transactions);
+    }
+
+    handleEditOne(editedTransaction) {
+        //This code only edits the specific transaction from the array
+        let transactions = this.state.transactions;
+        for (var i = 0; i < transactions.length; i++) {
+            if (transactions[i].id === editedTransaction.id) {
+                transactions[i] = editedTransaction;
+                break;
+            }
+        }
+        this.setState({ transactions: transactions });
+        //the code below gets the full list
         // this.populateTransactionsList();
         // this.renderTransactionsListTable(this.state.transactions);
     }
@@ -70,7 +87,7 @@ class TransactionsList extends Component {
                         <td>
                         <ButtonGroup>
                             <DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne>
-                            <EditOne transaction ={ currentTransaction }></EditOne>
+                            <EditOne transaction ={ currentTransaction } onEditOne={(editedTransaction) => {this.handleEditOne(editedTransaction)}}></EditOne>
                         </ButtonGroup>
                         </td>
                     </tr>)}
