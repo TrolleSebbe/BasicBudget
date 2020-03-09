@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {AddNew} from './AddNew';
 import {DeleteOne} from './DeleteOne';
+import {EditOne} from './EditOne';
 import {
     Table,
+    ButtonGroup,
   } from 'reactstrap';
 
 class TransactionsList extends Component {
@@ -65,7 +67,12 @@ class TransactionsList extends Component {
                         <td>{currentTransaction.amount}</td>
                         <td>{currentTransaction.description}</td>
                         <td>{currentTransaction.transactionDate}</td>
-                        <td><DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne></td>
+                        <td>
+                        <ButtonGroup>
+                            <DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne>
+                            <EditOne transaction ={ currentTransaction }></EditOne>
+                        </ButtonGroup>
+                        </td>
                     </tr>)}
                 </tbody>
             </Table>

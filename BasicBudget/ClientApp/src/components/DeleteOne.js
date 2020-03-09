@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button, ButtonGroup,
+  Button,
 } from 'reactstrap';
 
 class DeleteOne extends React.Component {
@@ -28,10 +28,7 @@ class DeleteOne extends React.Component {
     //we must pass () => method to avoid the trigger on render
     return (
       <div>
-        <ButtonGroup>
           <Button outline color="danger" onClick={() => {this.handleDeleteOne()} }>🗑️</Button>
-          <Button outline color="secondary" onClick={() => {this.handleDeleteOne()} }>🖊️</Button>
-        </ButtonGroup>
       </div>
     )
   }
