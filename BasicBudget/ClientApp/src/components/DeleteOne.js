@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
 } from 'reactstrap';
+import Emoji from './Emoji';
 
 class DeleteOne extends React.Component {
 
@@ -28,7 +29,7 @@ class DeleteOne extends React.Component {
     //we must pass () => method to avoid the trigger on render
     return (
       <div>
-          <Button outline color="danger" onClick={() => {this.handleDeleteOne()} }>🗑️</Button>
+          <Button outline color="danger" onClick={() => {this.handleDeleteOne()} }><Emoji symbol="🗑️"></Emoji></Button>
       </div>
     )
   }

@@ -9,6 +9,7 @@ import {
   Input,
   Modal,
 } from 'reactstrap';
+import Emoji from './Emoji';
 
 class EditOne extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class EditOne extends React.Component {
   render() {
     return (
       <div className="EditOne">
-        <Button outline color="secondary" onClick={() => { this.handleOpen() }}>🖊️</Button>
+        <Button outline color="secondary" onClick={() => { this.handleOpen() }}><Emoji symbol="🖊️"></Emoji></Button>
         <Modal isOpen={this.state.isOpen}>
           <Card>
               <CardBody>
