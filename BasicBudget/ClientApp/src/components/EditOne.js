@@ -41,6 +41,7 @@ class EditOne extends React.Component {
     jsonObject["shortName"] = this.state.shortName;
     jsonObject["description"] = this.state.description;
     jsonObject["amount"] = parseInt(this.state.amount, 10);
+    jsonObject["transactiondate"] = this.props.transaction.transactionDate;
     //Do POST request
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => { //this triggers when the call is finished
