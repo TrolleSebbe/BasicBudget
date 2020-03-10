@@ -83,7 +83,7 @@ class TransactionsList extends Component {
                         <td>{currentTransaction.shortName}</td>
                         <td>{currentTransaction.amount}</td>
                         <td>{currentTransaction.description}</td>
-                        <td>{currentTransaction.transactionDate}</td>
+                        <td>{currentTransaction.transactionDate.split('T')[0] + " " + currentTransaction.transactionDate.split('T')[1].split('.')[0]}</td>
                         <td>
                         <ButtonGroup>
                             <DeleteOne transaction ={ currentTransaction } onDeleteOne={(removedTransaction) => {this.handleDeleteOne(removedTransaction)}}></DeleteOne>
